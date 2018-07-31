@@ -127,4 +127,6 @@ export default{
         text-align: center
         color: $darkTextColor
         ellipsis()
+        
+        
 </style>
