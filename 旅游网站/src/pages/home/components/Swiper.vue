@@ -1,19 +1,11 @@
 <template>
 	<div class="wrapper">
-		<swiper :options="swiperOption" >
+		<swiper :options="swiperOption" v-if="showSwiper">
 			<!-- slides -->
-			<swiper-slide>
-				<img class="swipe-img" src="http://img1.qunarzz.com/piao/fusion/1807/71/e4bf6ce2a203ba02.jpg_750x200_c99e3a64.jpg">
+			<swiper-slide v-for="item in list" :key="item.id">
+				<img class="swipe-img" :src="item.imgUrl">
 			</swiper-slide>
-			<swiper-slide>
-				<img class="swipe-img" src="http://img1.qunarzz.com/piao/fusion/1807/c6/44fce1467be17702.jpg_750x200_406f5fc3.jpg" >
-			</swiper-slide>
-			<swiper-slide>
-				<img class="swipe-img" src="http://img1.qunarzz.com/piao/fusion/1807/e7/d70d0830a9941b02.jpg_750x200_f8c7d2ad.jpg" >
-			</swiper-slide>
-			<swiper-slide class="swipe-img">
-				<img class="swipe-img" src="http://img1.qunarzz.com/piao/fusion/1806/3c/c72a1ccd4d7b2202.jpg_750x200_b88bbab4.jpg" />
-			</swiper-slide>
+		
 
 			<div class="swiper-pagination"  slot="pagination"></div>
 
@@ -43,6 +35,9 @@
 <script  type='text/ecmascript-6'>
 export default {
 	name:'HomeSwiper',
+  props:{
+    list:Array
+  },
 	data() {
 		return {
 			swiperOption: {
@@ -58,6 +53,11 @@ export default {
                     }
                 }
             }
+        },
+        computed:{
+          showSwiper(){
+            return this.list.length
+          }
         }
     }
 
