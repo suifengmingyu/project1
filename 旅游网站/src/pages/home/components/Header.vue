@@ -6,11 +6,12 @@
 		<div class="header-input">
 			<span class="iconfont">&#xe632;</span>
 		输入城市/景点/游玩主题</div>
-		<div class="header-right">{{this.city}}
-			<span class="iconfont arrrow-icon">&#xe6aa;</span></div>
-    
-
-	</div>
+    <router-link  to="/city">
+      <div class="header-right">{{this.city}}
+       <span class="iconfont arrrow-icon">&#xe6aa;</span>
+     </div>
+   </router-link>
+ </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -20,7 +21,6 @@ export default{
     city:String
   }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -28,7 +28,7 @@ export default{
 @import '~styles/varibles.styl'
 .header
    display: flex
-   line-height : .86rem
+   line-height : $headerHeight
    background : $bgColor
    color : #fff
    .header-left
@@ -53,9 +53,9 @@ export default{
    	  width : 4.2em
    	  float :right
    	  text-align center
+      color:#fff
    	  .arrrow-icon
    	  	margin-left : -.04rem
    	  	font-size : .30rem
-
-   
+ 
 </style>
