@@ -1,40 +1,53 @@
 <template>
-	<div>
-		<div class="banner" @click="handleBannerClick">
-			<img src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg"
-			class="banner-img"/>
-			<div class="banner-info">
-				<div class="banner-title">大连圣亚海洋世界(AAAA景区)</div>
-				<div class="banner-numnber"><span class="iconfont banner-icon">&#xe692;</span>39</div>
-			</div>
-		</div>
-		<common-gallary  :imgs="imgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
-	</div>
-
+  <div>
+    <div class="banner" @click="handleBannerClick">
+      <img class="banner-img" :src="bannerImg" />
+      <div class="banner-info">
+        <div class="banner-tittle">
+          {{this.sightName}}
+        </div>
+        <div class="banner-number">
+          <span class="iconfont banner-icon">&#xe692;</span>
+          {{this.bannerImgs.length}}
+        </div>
+      </div>
+    </div>
+      <common-gallary
+        :imgs="bannerImgs"
+        v-show="showGallary"
+        @close="handleGallaryClose"
+      ></common-gallary>
+  </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 import CommonGallary from 'common/gallary/Gallary'
-
-export default{
-	name:'DetailBanner',
-	components: {
-		CommonGallary,
-	},data(){
-		return{
-			showGallary:false,
-			imgs:["http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg","http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_r_800x800_56e729ef.png" ]
-		}
-	},methods:{
-		handleBannerClick(){
-			this.showGallary=true
-		},
-		handleGallaryClose(){
-			this.showGallary=false
-		}
-	}
+export default {
+  name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
+  data () {
+    return {
+      showGallary: false
+    }
+  },
+  methods: {
+    handleBannerClick () {
+      this.showGallary = true
+    },
+    handleGallaryClose () {
+      this.showGallary = false
+    }
+  },
+  components: {
+    CommonGallary
+  }
 }
 </script>
+
 
 <style lang="stylus" scoped>
 
