@@ -3,6 +3,7 @@
 		<router-link tag="div" to="/" class="header-abs" v-show='showAbs'>
 			<div class="iconfont header-abs-back" >&#xe624;</div>
 		</router-link>
+
 		<div class="header-fixed" v-show='!showAbs' :style="opacityStyle">
 			<router-link to="/">
 				<div class="iconfont header-fixed-back" >
@@ -27,7 +28,11 @@ export default{
 		}
 	},activated(){
 		window.addEventListener('scroll', this.handleScroll)
-	},methods:{
+	},
+	deactivated(){
+		window.removeEventListener('scroll', this.handleScroll)
+	}
+	,methods:{
 		handleScroll(){
 			const top = document.documentElement.scrollTop
 			if (top > 60) {
