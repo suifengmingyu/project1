@@ -6,7 +6,7 @@
 				<div class="button-list">
 					<div class="button-wrapper">
 						<div class="button">
-							{{this.$store.state.city}}
+							{{this.currentCity}}
 						</div>
 					</div>
 				</div>
@@ -38,6 +38,7 @@
 
 <script type="text/ecmascript-6">
 import Bscroll from 'better-scroll'
+import {mapState,mapMutations} from 'vuex'
 /*
 better-scroll要求,三层结构,最后一层平级结构
 <div ref="warpper">
@@ -53,6 +54,13 @@ better-scroll要求,三层结构,最后一层平级结构
 import router from 'vue-router'
 export default{
 	name:'CityList'
+	,computed:{
+		...mapState({
+			currentCity:'city'
+		})
+
+
+	}
 	,mounted(){
 		this.scroll=new Bscroll(this.$refs.wrapper)
 	},props:{
@@ -62,12 +70,11 @@ export default{
 
 	},methods:{
 		handleCityClick(city){
-			this.$store.commit('changeCity',city)
+			
+			this.changeCity(city)
 			this.$router.push('/')
-
-
-
-		}
+		},
+		...mapMutations(['changeCity'])//将mutations的changeCity方法映射过来
 	}
 	,watch:{
 		letter (){
