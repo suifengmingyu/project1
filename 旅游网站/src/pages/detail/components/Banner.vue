@@ -15,6 +15,7 @@
 
 <script type="text/ecmascript-6">
 import CommonGallary from 'common/gallary/Gallary'
+
 export default{
 	name:'DetailBanner',
 	components: {
