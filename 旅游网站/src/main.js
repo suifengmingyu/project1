@@ -9,12 +9,13 @@ import 'styles/border.css'
 import 'styles/iconfont.css'
 import  VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import 'babel-polyfill'
 
 import store from './store/index.js'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
+Vue.use(VueAwesomeSwiper/* { default global options } */)
 
 /* eslint-disable no-new */
 new Vue({
